@@ -1,0 +1,33 @@
+﻿@using Dynamicweb.CoreUI.Displays.Widgets;
+@using Dynamicweb.CoreUI.Rendering;
+@model ExpressDelivery.Components.ExpressDeliveryWidget
+
+@{
+    var remainingTime = Model.RemainingTime.ToString("d' days 'hh' hours 'mm' minutes 'ss' seconds'");
+
+    var timeFactor = 1000;
+    var totalHours = (int)Math.Floor(Model.RemainingTime.TotalHours * timeFactor);
+    var progress = new ProgressDisplay(totalHours, Model.ShippingLimit * timeFactor)
+    {
+        ProgressType = ProgressWidgetType.Bar,
+        HideSummary = true,
+    };
+
+    var infoCard = new Dynamicweb.CoreUI.Displays.Widgets.InfoCardDisplay
+    {
+        Value = new()
+        {
+            AdditionalInfo =
+            [
+                new(new("Inspirational message"), new(Model.ShippingComment)),
+                new(new("Time remaining"), new(progress)),
+                new(new(""), new(remainingTime)),
+            ]
+        }
+    };
+}
+
+<express-delivery-widget>
+    <script src="/ExpressDelivery/js/ExpressDeliveryWidget.js" type="module"></script>
+    @await Component.RenderDynamicwebUiComponent(infoCard)
+</express-delivery-widget>
