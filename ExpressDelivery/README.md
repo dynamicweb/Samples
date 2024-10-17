@@ -3,9 +3,10 @@ This project shows how to add a new feature allowing the creation of new presets
 
 # Concepts shown
 To implement the feature, the following extensibility points are used
-- Creating screens
-  - List, Edit
-- Creating models, queries, commands
-- Injecting new UI on existing screens
-- Extending existing trees
+- Creating new list, edit and prompt screens with models, queries and commands
+- Injecting new UI onto existing screens
+- Adding nodes to existing trees
 - Creating custom UI components with client-side logic
+- Update providers for manipulating the database
+
+The project also shows how to use these different concepts together. For example how to use existing screen information and prompt the user for more information and use it to create new relations.
