@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IsPackable>true</IsPackable>
+		<PackageId>GrpcPipeline</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>DynamicWeb Samples</Authors>
+		<Description>This is a package containing a gRPC pipeline for DynamicWeb 10</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Dynamicweb.Host.Core" Version="10.*" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.66.0" />
+	</ItemGroup>
+
+</Project>
